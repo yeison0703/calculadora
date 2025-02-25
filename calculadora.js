@@ -8,12 +8,13 @@ function limpiar(){
     display.value = " ";
 }
 
-function calcular(){
+function calcular() {
     if (display.value.trim() === "")
         return;
-    try{
-        display.value = eval(display.value);
-    } catch{
+
+    try {
+        display.value = new Function(`return ${display.value}`)();
+    } catch {
         display.value = "Error";
     }
 }
